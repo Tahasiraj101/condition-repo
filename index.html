@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Array Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #282c34, #3a3f47, #282c34);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            color: #ff0080;
+            text-shadow: 0 0 20px #ff0080, 0 0 30px #ff0080;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px; /* Max width for larger screens */
+        }
+
+        input {
+            border: 2px solid #ff0080;
+            border-radius: 5px;
+            padding: 10px;
+            width: 70%; /* Adjusted width */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff0080;
+            outline: none;
+            box-shadow: 0 0 10px #ff0080;
+        }
+
+        button {
+            color: #ff0080;
+            border: 2px solid #ff0080; /* Added border for consistency */
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 10px; /* Added margin to separate from input */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff1493;
+        }
+
+        #output {
+            list-style: none;
+            padding: 0;
+            animation: fadeIn 1s;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        li {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0080;
+            font-size: 1.2em;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            input {
+                width: 80%;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Input Array Example</h1>
+    <div class="input-group">
+        <input type="text" id="userInput" class="form-control" placeholder="Type...">
+    </div>
+    <button class="btn" onclick="addAndDisplay()">Add</button>
+
+    <h2 class="mt-4">Array Elements:</h2>
+    <ul id="output"></ul>
+
+    <script>
+        let inputArray = []; 
+
+        function addAndDisplay() {
+            const input = document.getElementById('userInput').value; 
+            if (input) {
+                inputArray.push(input);
+                document.getElementById('output').innerHTML = inputArray.map((item, index) => `<li>${index + 1}. ${item}</li>`).join('');
+                document.getElementById('userInput').value = ''; 
+            } else {
+                alert("Please fill the input!");
+            }
+        }
+    </script>
+
+</body>
+</html>
